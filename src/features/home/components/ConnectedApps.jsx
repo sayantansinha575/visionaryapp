@@ -32,16 +32,6 @@ export default function ConnectedApps() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Chip */}
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-6"
-          >
-            <div className="inline-block px-3 py-1 bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-700">
-              <span style={{ fontFamily: '"Product Sans", "Google Sans", Roboto, Arial, sans-serif' }}>One platform</span>
-            </div>
-          </motion.div>
         </div>
 
         {/* Mobile: 600px, Tablet: 800px, Desktop: 1000px */}

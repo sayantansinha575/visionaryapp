@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 import {
   X,
   User,
@@ -17,6 +18,7 @@ export default function Layout({ children, currentPageName }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -143,7 +145,7 @@ export default function Layout({ children, currentPageName }) {
                   </button>
 
                   <Link
-                    to={createPageUrl("Home")}
+                    to="/"
                     className="flex items-center gap-3"
                   >
                     <img
@@ -204,39 +206,40 @@ export default function Layout({ children, currentPageName }) {
                       </div>
                     </div>
 
-                    <a
-                      href="#"
+                    <button
+                      onClick={() => setIsDownloadDialogOpen(true)}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
                       Where to start?
-                    </a>
-                    <a
-                      href="#"
+                    </button>
+                    <button
+                      onClick={() => setIsDownloadDialogOpen(true)}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
                       Solutions
-                    </a>
-                    <a
-                      href="#"
+                    </button>
+                    <button
+                      onClick={() => setIsDownloadDialogOpen(true)}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
                       Learning & insights
-                    </a>
-                    <a
-                      href="#"
+                    </button>
+                    <button
+                      onClick={() => setIsDownloadDialogOpen(true)}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
                       Get support
-                    </a>
+                    </button>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 lg:gap-4">
                   <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
                     className="hidden xl:flex items-center gap-2 text-[15px] font-medium text-gray-700 hover:text-gray-900 bg-transparent transition-colors whitespace-nowrap"
                     style={{ fontFamily: "var(--ui-font)" }}
                   >
@@ -244,29 +247,25 @@ export default function Layout({ children, currentPageName }) {
                     Sign in
                   </button>
 
-                  <Link
-                    to={createPageUrl("Download")}
-                    className="hidden xl:block"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-5 py-2.5 rounded-full transition-all flex items-center gap-2 whitespace-nowrap"
+                    style={{ fontFamily: "var(--ui-font)" }}
                   >
-                    <button
-                      className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-5 py-2.5 rounded-full transition-all flex items-center gap-2 whitespace-nowrap"
-                      style={{ fontFamily: "var(--ui-font)" }}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      Download Now
-                    </button>
-                  </Link>
+                      <path
+                        d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Download Now
+                  </button>
 
                   <div className="xl:hidden">
                     <button
@@ -329,29 +328,28 @@ export default function Layout({ children, currentPageName }) {
                 Parents
               </Link>
 
-              <Link to={createPageUrl("Download")}>
-                <button
-                  className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-6 py-3 rounded-full transition-all flex items-center gap-2"
-                  style={{
-                    fontFamily:
-                      '"Product Sans", "Google Sans", Roboto, Arial, sans-serif',
-                  }}
+              <button
+                onClick={() => setIsDownloadDialogOpen(true)}
+                className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-6 py-3 rounded-full transition-all flex items-center gap-2"
+                style={{
+                  fontFamily:
+                    '"Product Sans", "Google Sans", Roboto, Arial, sans-serif',
+                }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  Download Now
-                </button>
-              </Link>
+                  <path
+                    d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Download Now
+              </button>
             </div>
           </div>
         )}
@@ -373,45 +371,45 @@ export default function Layout({ children, currentPageName }) {
               </button>
 
               <div className="space-y-4">
-                <a
-                  href="#"
-                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
+                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily:
                       '"Product Sans", "Google Sans", Roboto, Arial, sans-serif',
                   }}
                 >
                   Where to start?
-                </a>
-                <a
-                  href="#"
-                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
+                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily:
                       '"Product Sans", "Google Sans", Roboto, Arial, sans-serif',
                   }}
                 >
                   Solutions
-                </a>
-                <a
-                  href="#"
-                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
+                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily:
                       '"Product Sans", "Google Sans", Roboto, Arial, sans-serif',
                   }}
                 >
                   Learning & insights
-                </a>
-                <a
-                  href="#"
-                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
+                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
                   }}
                 >
                   Get support
-                </a>
+                </button>
 
                 <div className="border-t border-gray-200 pt-4 mt-4">
                   <Link
@@ -453,40 +451,39 @@ export default function Layout({ children, currentPageName }) {
                   >
                     Parents
                   </Link>
-                  <a
-                    href="#"
-                    className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                     style={{
                       fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
                     }}
                   >
                     Expert support
-                  </a>
+                  </button>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4 mt-2 space-y-3">
-                  <Link to={createPageUrl("Download")} className="block">
-                    <button
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium px-6 py-2.5 rounded-full transition-all flex items-center justify-center gap-2"
-                      style={{
-                        fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
-                      }}
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium px-6 py-2.5 rounded-full transition-all flex items-center justify-center gap-2"
+                    style={{
+                      fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
+                    }}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      Download Now
-                    </button>
-                  </Link>
+                      <path
+                        d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Download Now
+                  </button>
                 </div>
               </div>
             </div>
@@ -507,14 +504,14 @@ export default function Layout({ children, currentPageName }) {
                 Follow us
               </span>
               <div className="flex items-center gap-5">
-                <a
-                  href="#"
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
                   className="text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   <Youtube size={20} />
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
                   className="text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   <svg
@@ -525,19 +522,19 @@ export default function Layout({ children, currentPageName }) {
                   >
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
                   className="text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   <Facebook size={20} />
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick={() => setIsDownloadDialogOpen(true)}
                   className="text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   <Linkedin size={20} />
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -590,28 +587,28 @@ export default function Layout({ children, currentPageName }) {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     For Schools
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     For Institutions
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Enterprise Plans
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -622,28 +619,28 @@ export default function Layout({ children, currentPageName }) {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Help Center
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Blog
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Community
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -662,20 +659,20 @@ export default function Layout({ children, currentPageName }) {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Careers
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-sm text-gray-600 hover:text-gray-900"
+                  <button
+                    onClick={() => setIsDownloadDialogOpen(true)}
+                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
                   >
                     Contact
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -705,6 +702,12 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
       </footer>
+
+      <CommingSoonDialog 
+        isOpen={isDownloadDialogOpen}
+        onClose={() => setIsDownloadDialogOpen(false)}
+        message="The Visionary app is coming soon! We're putting the finishing touches on an amazing learning experience."
+      />
     </div>
   );
 }

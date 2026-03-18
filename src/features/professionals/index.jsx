@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import { ArrowRight, Target, Code, Award, TrendingUp, Briefcase, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Professionals() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const journey = [
     {
       phase: "Assess",
@@ -178,14 +182,21 @@ export default function Professionals() {
           <p className="text-xl text-gray-600 mb-8">
             Join 15,000+ professionals advancing their careers
           </p>
-          <Link to={createPageUrl("Download")}>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2">
-              Get started free
-              <ArrowRight size={20} />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2"
+          >
+            Get started free
+            <ArrowRight size={20} />
+          </button>
         </div>
       </section>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="Professional development courses are coming soon! Get ready to advance your career with cutting-edge skills."
+      />
     </div>
   );
 }

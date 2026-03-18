@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import { ArrowRight, UserPlus, Eye, MessageCircle, Award, Heart, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Parents() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const journey = [
     {
       phase: "Connect",
@@ -178,14 +182,21 @@ export default function Parents() {
           <p className="text-xl text-gray-600 mb-8">
             10,000+ families trust Visionary
           </p>
-          <Link to={createPageUrl("Download")}>
-            <button className="bg-pink-600 hover:bg-pink-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2">
-              Get started free
-              <ArrowRight size={20} />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-pink-600 hover:bg-pink-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2"
+          >
+            Get started free
+            <ArrowRight size={20} />
+          </button>
         </div>
       </section>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="The parent dashboard is coming soon! Stay connected with your child's learning journey like never before."
+      />
     </div>
   );
 }

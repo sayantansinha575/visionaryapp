@@ -89,13 +89,12 @@ export default function Download() {
               const IconComponent = platform.icon;
               
               return (
-                <motion.a
+                <motion.div
                   key={platform.name}
-                  href={platform.link}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="group"
+                  className="group cursor-default"
                 >
                   <div className="bg-white border border-gray-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 h-full">
                     <div className="flex items-start justify-between mb-6">
@@ -108,8 +107,14 @@ export default function Download() {
                         </div>
                       </div>
                       
-                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-blue-600 transition-all">
-                        <DownloadIcon className="w-5 h-5 text-gray-600 group-hover:text-white transition-all" />
+                      <div className="relative w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-300 transition-all">
+                        <DownloadIcon className="w-5 h-5 text-gray-600 transition-all" />
+                        
+                        {/* Coming Soon Tooltip */}
+                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                          Coming Soon
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                        </div>
                       </div>
                     </div>
 
@@ -121,7 +126,7 @@ export default function Download() {
                       {platform.description}
                     </p>
                   </div>
-                </motion.a>
+                </motion.div>
               );
             })}
           </div>

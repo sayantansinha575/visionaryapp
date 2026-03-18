@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function CTASection() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <section className="py-16 px-6 md:px-12 bg-white">
       <div className="max-w-4xl mx-auto text-center">
@@ -31,6 +34,7 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
+          onClick={() => setIsDialogOpen(true)}
           className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-10 py-4 rounded-full transition-all shadow-sm hover:shadow-md"
         >
           Get started — it's free
@@ -46,6 +50,12 @@ export default function CTASection() {
           No credit card required
         </motion.p>
       </div>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="We're almost ready to launch! Get ready for an incredible learning experience with Visionary."
+      />
     </section>
   );
 }

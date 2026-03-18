@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Bot, Sparkles } from "lucide-react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function AIMentorSection() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <section className="py-16 px-6 md:px-12 bg-blue-600 text-white relative overflow-hidden">
       {/* Subtle gradient overlay */}
@@ -16,7 +19,7 @@ export default function AIMentorSection() {
           className="mb-8"
         >
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 mb-8">
-            <Sparkles className="w-10 h-10" strokeWidth={2} />
+            <Bot className="w-10 h-10" strokeWidth={2} />
           </div>
         </motion.div>
 
@@ -48,11 +51,18 @@ export default function AIMentorSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
+          onClick={() => setIsDialogOpen(true)}
           className="bg-white text-blue-600 hover:bg-blue-50 text-lg font-medium px-10 py-4 rounded-full transition-all shadow-lg hover:shadow-xl"
         >
           Try AI mentor free
         </motion.button>
       </div>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="Our AI mentor is coming soon! Get ready for 24×7 personalized learning support in your language."
+      />
     </section>
   );
 }

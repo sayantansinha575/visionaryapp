@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import { ArrowRight, Palette, Users, BarChart, Trophy, Rocket, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Teachers() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const journey = [
     {
       phase: "Start",
@@ -178,14 +182,21 @@ export default function Teachers() {
           <p className="text-xl text-gray-600 mb-8">
             Join 5,000+ teachers transforming education
           </p>
-          <Link to={createPageUrl("Download")}>
-            <button className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2">
-              Get started free
-              <ArrowRight size={20} />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2"
+          >
+            Get started free
+            <ArrowRight size={20} />
+          </button>
         </div>
       </section>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="The teacher platform is coming soon! We're building amazing tools to help you transform your classroom."
+      />
     </div>
   );
 }

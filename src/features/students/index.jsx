@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import { ArrowRight, BookOpen, Brain, Target, Award, Briefcase, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Students() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const journey = [
     {
       phase: "Start",
@@ -178,14 +182,21 @@ export default function Students() {
           <p className="text-xl text-gray-600 mb-8">
             Join 50,000+ students already learning with Visionary
           </p>
-          <Link to={createPageUrl("Download")}>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2">
-              Get started free
-              <ArrowRight size={20} />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all inline-flex items-center gap-2"
+          >
+            Get started free
+            <ArrowRight size={20} />
+          </button>
         </div>
       </section>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="We're excited to launch soon! Sign up for early access and be the first to experience Visionary's revolutionary learning platform."
+      />
     </div>
   );
 }

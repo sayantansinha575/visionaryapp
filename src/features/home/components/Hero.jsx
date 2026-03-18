@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Hero() {
   const videoRef = useRef(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   // Background video in /assets (uploaded as background_hero_video.mp4)
   const videoSrc = '/assets/background_hero_video.mp4';
 
@@ -76,6 +78,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-7">
             <button
+              onClick={() => setIsDialogOpen(true)}
               className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#202124] text-white text-[17px] font-medium hover:bg-[#3c4043] transition-colors"
               style={{ fontFamily: 'Product Sans' }}
             >
@@ -83,6 +86,7 @@ export default function Hero() {
             </button>
 
             <button
+              onClick={() => setIsDialogOpen(true)}
               className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#f1f3f4] text-[#202124] text-[17px] font-medium hover:bg-[#e8eaed] transition-colors"
               style={{ fontFamily: 'Product Sans' }}
             >
@@ -93,6 +97,12 @@ export default function Hero() {
 
         </div>
       </div>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="Visionary is launching soon! Get ready to revolutionize your learning experience with AI-powered education."
+      />
     </section>
   );
 }

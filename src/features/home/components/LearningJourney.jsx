@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Target, Sparkles, TrendingUp, Award } from "lucide-react";
+import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function LearningJourney() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const steps = [
     {
       number: "01",
@@ -180,12 +183,21 @@ export default function LearningJourney() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-10 py-4 rounded-full transition-all shadow-sm hover:shadow-lg">
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-10 py-4 rounded-full transition-all shadow-sm hover:shadow-lg"
+          >
             Start your journey now
           </button>
           <p className="mt-4 text-sm text-gray-500">Join 50,000+ students already learning with Visionary</p>
         </motion.div>
       </div>
+
+      <CommingSoonDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        message="The learning journey feature is coming soon! We're working hard to bring you an amazing experience."
+      />
     </section>
   );
 }
