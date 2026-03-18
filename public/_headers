@@ -1,0 +1,26 @@
+/*
+Global security and performance headers for Netlify.
+Place this file in `public/_headers` so Netlify will apply headers to all paths.
+These headers enforce HTTPS, HSTS, CSP, and other common security best-practices.
+Adjust the Content-Security-Policy to match your external endpoints if you add analytics or CDNs.
+*/
+/*
+  Note: HSTS and other security headers should be set at the platform edge when
+  possible (CDN / hosting). This _headers file is for Netlify and similar hosts.
+*/
+/* Apply to all routes */
+/api/*
+  Cache-Control: no-store
+
+/* All static/html routes */
+/* match everything */
+/* */
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Feature-Policy: 
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https:; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';
+  Cache-Control: public, max-age=0, must-revalidate
