@@ -6,7 +6,13 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: true
+    allowedHosts: true,
+    headers: {
+      'X-Frame-Options': 'SAMEORIGIN',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Content-Security-Policy': "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; media-src 'self' blob:; connect-src 'self' https: ws: wss:; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+    }
   },
   resolve: {
     alias: {

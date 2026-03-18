@@ -120,11 +120,30 @@
 :root {
   /* Put fast system fonts first so text can render immediately, then
      fall back to Product Sans when it becomes available (font-display: swap). */
-  --ui-font: 'Product Sans', sans-serif
+  --ui-font: 'Product Sans', 'Google Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-  font-family: 'Product Sans', sans-serif;
+  font-family: var(--ui-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Font family classes */
+.product-sans, .logo-text, h1 { 
+  font-family: var(--ui-font); 
+  letter-spacing: -0.02em; 
+}
+
+h2, h3, h4, h5, h6, button, nav, header, a, .google-sans { 
+  font-family: var(--ui-font); 
+  font-weight: 500; 
+}
+
+body, p, li, span, div, input, select, textarea, label { 
+  font-family: var(--ui-font); 
+  font-weight: 400; 
 }
 
 

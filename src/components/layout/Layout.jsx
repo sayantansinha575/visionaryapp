@@ -76,10 +76,9 @@ export default function Layout({ children, currentPageName }) {
       metaCSP.httpEquiv = "Content-Security-Policy";
       document.head.appendChild(metaCSP);
     }
-    // Restrict sources: allow styles inline (required by some components),
-    // disallow unsafe script eval/inline, and serve fonts/images from self.
+    // Allow external images from Unsplash and other trusted sources
     metaCSP.content =
-      "default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; frame-ancestors 'self'; base-uri 'self';";
+      "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; media-src 'self' blob:; connect-src 'self' https:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; base-uri 'self';";
 
     // Referrer policy
     let metaReferrer = document.querySelector('meta[name="referrer"]');
@@ -90,15 +89,8 @@ export default function Layout({ children, currentPageName }) {
     }
     metaReferrer.content = "strict-origin-when-cross-origin";
 
-    let metaXFrame = document.querySelector(
-      'meta[http-equiv="X-Frame-Options"]',
-    );
-    if (!metaXFrame) {
-      metaXFrame = document.createElement("meta");
-      metaXFrame.httpEquiv = "X-Frame-Options";
-      document.head.appendChild(metaXFrame);
-    }
-    metaXFrame.content = "SAMEORIGIN";
+    // Note: X-Frame-Options and frame-ancestors should be set via HTTP headers, not meta tags
+    // Removing meta tag implementation as it's not effective and causes console warnings
 
     // Performance optimizations
     let metaViewport = document.querySelector('meta[name="viewport"]');
@@ -130,20 +122,6 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Use Product Sans / Google Sans font-family in styles. */}
-      <style>{`
-        /* Note: Product Sans and Google Sans are proprietary fonts. To use them
-           add licensed font files into /public/fonts and declare @font-face
-           rules in your global CSS. This block sets the CSS fallbacks only. */
-
-        :root { --ui-font: "Product Sans", "Google Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-
-        .product-sans, .logo-text, h1 { font-family: var(--ui-font); letter-spacing: -0.02em; }
-        h2, h3, h4, h5, h6, button, nav, header, a, .google-sans { font-family: var(--ui-font); font-weight: 500; }
-        body, p, li, span, div, input, select, textarea, label { font-family: var(--ui-font); font-weight: 400; }
-        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-      `}</style>
-
       <link rel="icon" href="/favicon.png" />
 
       {/* Navigation - Default State (Not Scrolled) */}
