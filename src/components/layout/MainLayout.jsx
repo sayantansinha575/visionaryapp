@@ -169,7 +169,7 @@ function MainLayout({ children, currentPageName }) {
                     className="flex items-center gap-3"
                   >
                     <img
-                      src="/assets/Visionary_logo.png"
+                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v…ad89675fe8a72d95be35/fddb3c3c7_Visionary_logo.png"
                       alt="Visionary Logo"
                       className="h-6 w-auto logo-text"
                       loading="eager"
