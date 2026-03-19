@@ -3,21 +3,18 @@ import Typed from "typed.js";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Hero() {
-  // const videoRef = useRef(null);
   const typedRef = useRef(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  // Background video in /assets (uploaded as background_hero_video.mp4)
-  // const videoSrc = '/assets/background_hero_video.mp4';
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
       strings: ["Learn", "Ask", "Practice", "Build"],
-      typeSpeed: 60,
-      backSpeed: 40,
+      typeSpeed: 80,
+      backSpeed: 80,
       backDelay: 1500,
       loop: true,
-      showCursor: true,
-      cursorChar: "|",
+      showCursor: false,
+      // cursorChar: "|",
     });
 
     return () => {
@@ -25,32 +22,17 @@ export default function Hero() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (videoRef.current) {
-  //     videoRef.current.load();
-  //     videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
-  //   }
-  // }, []);
-
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center bg-white">
-      {/* Video Background — commented out for now
+      {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        {videoSrc && (
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover"
-            src={videoSrc}
-            poster="/assets/background_hero_poster.svg"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          />
-        )}
+        <img
+          src="/assets/light_grey_dots_background.jpg"
+          alt="Background for Hero Section"
+          className="w-full h-full object-cover opacity-50"
+        />
       </div>
-      */}
+
       {/* Content */}
       <div className="relative z-10 w-full px-6 md:px-12 pt-20">
         <div className="max-w-4xl lg:max-w-6xl">
