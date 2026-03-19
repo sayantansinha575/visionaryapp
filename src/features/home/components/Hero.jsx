@@ -27,7 +27,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden z-0">
         <img
-          src="/assets/light_grey_dots_background.jpg"
+          src="/assets/dot-grid.jpg"
           alt="Background for Hero Section"
           className="w-full h-full object-cover opacity-50"
         />
