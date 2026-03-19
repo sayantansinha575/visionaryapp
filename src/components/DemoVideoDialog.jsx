@@ -31,7 +31,7 @@ const DemoVideoDialog = ({ isOpen, onClose }) => {
         {/* Video player */}
         <video
           ref={videoRef}
-          src="/assets/167386.mp4"
+          src="/videos/167386.mp4"
           controls
           autoPlay
           className="w-full max-h-[80vh] object-contain rounded-2xl"
