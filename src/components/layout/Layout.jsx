@@ -5,6 +5,7 @@ import CommingSoonDialog from "@/components/CommingSoonDialog";
 import DemoVideoDialog from "@/components/DemoVideoDialog";
 import MobileMenu from "@/components/MobileMenu";
 import Footer from "./Footer";
+import { CONTACT_EMAIL } from "@/constants/config";
 import {
   X,
   User,
@@ -229,7 +230,7 @@ export default function Layout({ children, currentPageName }) {
                       Learning & insights
                     </button>
                     <a
-                      href="mailto:raj@visionary.org.in"
+                      href={`mailto:${CONTACT_EMAIL}`}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >

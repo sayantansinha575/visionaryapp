@@ -4,6 +4,7 @@ import { createPageUrl } from "@/lib/utils";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
 import DemoVideoDialog from "@/components/DemoVideoDialog";
 import Footer from "./Footer";
+import { CONTACT_EMAIL } from "@/constants/config";
 import {
   X,
   User,
@@ -253,7 +254,7 @@ function MainLayout({ children, currentPageName }) {
                       Learning & insights
                     </button>
                     <a
-                      href="mailto:raj@visionary.org.in"
+                      href={`mailto:${CONTACT_EMAIL}`}
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
@@ -427,7 +428,7 @@ function MainLayout({ children, currentPageName }) {
                   Learning & insights
                 </a>
                 <a
-                  href="mailto:raj@visionary.org.in"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily: '"Google Sans", Roboto, Arial, sans-serif',

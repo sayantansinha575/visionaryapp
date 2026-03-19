@@ -1,4 +1,5 @@
 import React from "react";
+import { CONTACT_EMAIL } from "@/constants/config";
 import {
   Dialog,
   DialogContent,
@@ -91,7 +92,9 @@ const CommingSoonDialog = ({
               </svg>
             </div>
             <p className="text-sm font-semibold text-gray-800">For Everyone</p>
-            <p className="text-xs text-gray-500">Students, teachers & pros</p>
+            <p className="text-xs text-gray-500">
+              Students, teachers & organization
+            </p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center">
@@ -156,10 +159,10 @@ const CommingSoonDialog = ({
         <div className="mt-8 flex items-center justify-center gap-3 border-t border-gray-100 pt-6">
           <span className="text-sm text-gray-500">Questions? Reach us at</span>
           <a
-            href="mailto:raj@visionary.org.in"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
           >
-            raj@visionary.org.in
+            {CONTACT_EMAIL}
           </a>
         </div>
       </DialogContent>

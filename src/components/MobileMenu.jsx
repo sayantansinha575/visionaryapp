@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import { X } from "lucide-react";
+import { CONTACT_EMAIL } from "@/constants/config";
 
 const UI_FONT = '"Product Sans", "Google Sans", Roboto, Arial, sans-serif';
 
@@ -63,7 +64,7 @@ const MobileMenu = ({
               Learning &amp; insights
             </button>
             <a
-              href="mailto:raj@visionary.org.in"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
               style={{ fontFamily: UI_FONT }}
             >

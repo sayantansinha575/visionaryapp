@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
+import { CONTACT_EMAIL } from "@/constants/config";
 import { Youtube, Facebook, Linkedin } from "lucide-react";
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -191,7 +192,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:raj@visionary.org.in"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     Contact us
