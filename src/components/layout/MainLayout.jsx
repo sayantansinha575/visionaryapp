@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
+import DemoVideoDialog from "@/components/DemoVideoDialog";
 import Footer from "./Footer";
 import {
   X,
@@ -20,6 +21,7 @@ function MainLayout({ children, currentPageName }) {
   const [showBanner, setShowBanner] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
+  const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -250,13 +252,13 @@ function MainLayout({ children, currentPageName }) {
                     >
                       Learning & insights
                     </button>
-                    <button
-                      onClick={() => setIsDownloadDialogOpen(true)}
+                    <a
+                      href="mailto:raj@visionary.org.in"
                       className="text-[15px] font-medium text-[#5f6368] hover:text-gray-900 transition-colors whitespace-nowrap"
                       style={{ fontFamily: "var(--ui-font)" }}
                     >
-                      Get support
-                    </button>
+                      Contact us
+                    </a>
                   </div>
                 </div>
 
@@ -271,7 +273,7 @@ function MainLayout({ children, currentPageName }) {
                   </button>
 
                   <button
-                    onClick={() => setIsDownloadDialogOpen(true)}
+                    onClick={() => setIsDemoDialogOpen(true)}
                     className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-5 py-2.5 rounded-full transition-all flex items-center gap-2 whitespace-nowrap"
                     style={{ fontFamily: "var(--ui-font)" }}
                   >
@@ -283,11 +285,11 @@ function MainLayout({ children, currentPageName }) {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                        d="M8 5v14l11-7z"
                         fill="currentColor"
                       />
                     </svg>
-                    Download Now
+                    Demo
                   </button>
 
                   <div className="xl:hidden">
@@ -352,7 +354,7 @@ function MainLayout({ children, currentPageName }) {
               </Link>
 
               <button
-                onClick={() => setIsDownloadDialogOpen(true)}
+                onClick={() => setIsDemoDialogOpen(true)}
                 className="bg-black hover:bg-gray-800 text-white text-[15px] font-medium px-6 py-3 rounded-full transition-all flex items-center gap-2"
                 style={{
                   fontFamily:
@@ -367,11 +369,11 @@ function MainLayout({ children, currentPageName }) {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                    d="M8 5v14l11-7z"
                     fill="currentColor"
                   />
                 </svg>
-                Download Now
+                Demo
               </button>
             </div>
           </div>
@@ -425,13 +427,13 @@ function MainLayout({ children, currentPageName }) {
                   Learning & insights
                 </a>
                 <a
-                  href="#"
-                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2"
+                  href="mailto:raj@visionary.org.in"
+                  className="block text-[15px] font-medium text-[#5f6368] hover:text-gray-900 py-2 text-left"
                   style={{
                     fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
                   }}
                 >
-                  Get support
+                  Contact us
                 </a>
 
                 <div className="border-t border-gray-200 pt-4 mt-4">
@@ -487,7 +489,7 @@ function MainLayout({ children, currentPageName }) {
 
                 <div className="border-t border-gray-200 pt-4 mt-2 space-y-3">
                   <button
-                    onClick={() => setIsDownloadDialogOpen(true)}
+                    onClick={() => setIsDemoDialogOpen(true)}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium px-6 py-2.5 rounded-full transition-all flex items-center justify-center gap-2"
                     style={{
                       fontFamily: '"Google Sans", Roboto, Arial, sans-serif',
@@ -501,11 +503,11 @@ function MainLayout({ children, currentPageName }) {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"
+                        d="M8 5v14l11-7z"
                         fill="currentColor"
                       />
                     </svg>
-                    Download Now
+                    Demo
                   </button>
                 </div>
               </div>
@@ -523,6 +525,10 @@ function MainLayout({ children, currentPageName }) {
         isOpen={isDownloadDialogOpen}
         onClose={() => setIsDownloadDialogOpen(false)}
         message="The Visionary app is coming soon! We're putting the finishing touches on an amazing learning experience."
+      />
+      <DemoVideoDialog
+        isOpen={isDemoDialogOpen}
+        onClose={() => setIsDemoDialogOpen(false)}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, Users, Briefcase, Heart } from "lucide-react";
 
@@ -10,34 +11,46 @@ export default function AutoRotatingCarousel() {
       chip: "Students",
       icon: GraduationCap,
       title: "Master every exam with confidence",
-      description: "Get 24×7 AI mentor support for JEE, NEET, UPSC prep. Learn with 3D visuals, practice unlimited tests, and track your progress daily.",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop&q=80",
-      color: "#4285F4"
+      description:
+        "Get 24×7 AI mentor support for JEE, NEET, UPSC prep. Learn with 3D visuals, practice unlimited tests, and track your progress daily.",
+      image:
+        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop&q=80",
+      color: "#4285F4",
+      route: "/students",
     },
     {
       chip: "Teachers",
       icon: Users,
       title: "Teach smarter with AI assistance",
-      description: "Get 24×7 support for lesson planning, create engaging 3D content, track student progress, and manage assignments effortlessly.",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=800&fit=crop&q=80",
-      color: "#34A853"
+      description:
+        "Get 24×7 support for lesson planning, create engaging 3D content, track student progress, and manage assignments effortlessly.",
+      image:
+        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=800&fit=crop&q=80",
+      color: "#34A853",
+      route: "/teachers",
     },
     {
       chip: "Professionals",
       icon: Briefcase,
       title: "Upskill without career breaks",
-      description: "Access 24×7 career guidance, learn job-ready skills with interactive courses, get certified, and receive placement support.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop&q=80",
-      color: "#FBBC04"
+      description:
+        "Access 24×7 career guidance, learn job-ready skills with interactive courses, get certified, and receive placement support.",
+      image:
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop&q=80",
+      color: "#FBBC04",
+      route: "/professionals",
     },
     {
       chip: "Parents",
       icon: Heart,
       title: "Track your child's learning journey",
-      description: "Monitor progress 24×7, get instant alerts on performance, communicate with teachers, and ensure your child's safe online learning.",
-      image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1200&h=800&fit=crop&q=80",
-      color: "#EA4335"
-    }
+      description:
+        "Monitor progress 24×7, get instant alerts on performance, communicate with teachers, and ensure your child's safe online learning.",
+      image:
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1200&h=800&fit=crop&q=80",
+      color: "#EA4335",
+      route: "/parents",
+    },
   ];
 
   // Auto-rotate every 3 seconds
@@ -74,7 +87,7 @@ export default function AutoRotatingCarousel() {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl"
         />
@@ -87,7 +100,7 @@ export default function AutoRotatingCarousel() {
             duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 2,
           }}
           className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-purple-100 rounded-full blur-3xl"
         />
@@ -101,7 +114,10 @@ export default function AutoRotatingCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl md:text-5xl text-[#202124] mb-4 tracking-tight"
-            style={{ fontFamily: '"Product Sans", "Google Sans", sans-serif', fontWeight: 400 }}
+            style={{
+              fontFamily: '"Product Sans", "Google Sans", sans-serif',
+              fontWeight: 400,
+            }}
           >
             For everyone's success
           </motion.h2>
@@ -113,7 +129,8 @@ export default function AutoRotatingCarousel() {
             className="text-lg text-[#5f6368] max-w-2xl mx-auto"
             style={{ fontFamily: '"Product Sans", "Google Sans", sans-serif' }}
           >
-            24×7 support tailored for students, teachers, professionals & parents
+            24×7 support tailored for students, teachers, professionals &
+            parents
           </motion.p>
         </div>
 
@@ -135,14 +152,14 @@ export default function AutoRotatingCarousel() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium"
-                style={{ 
+                style={{
                   backgroundColor: `${activeFeature.color}15`,
-                  color: activeFeature.color
+                  color: activeFeature.color,
                 }}
               >
-                {React.createElement(activeFeature.icon, { 
+                {React.createElement(activeFeature.icon, {
                   className: "w-4 h-4",
-                  strokeWidth: 2
+                  strokeWidth: 2,
                 })}
                 {activeFeature.chip}
               </motion.div>
@@ -155,15 +172,22 @@ export default function AutoRotatingCarousel() {
                 {activeFeature.description}
               </p>
 
-              <button 
+              <Link
+                to={activeFeature.route}
                 className="inline-flex items-center gap-2 text-base font-medium hover:gap-4 transition-all mt-4"
                 style={{ color: activeFeature.color }}
               >
                 Learn more
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path
+                    d="M7.5 15L12.5 10L7.5 5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
-              </button>
+              </Link>
             </motion.div>
           </AnimatePresence>
 
@@ -173,7 +197,7 @@ export default function AutoRotatingCarousel() {
               <AnimatePresence mode="sync">
                 {visibleItems.map((item, idx) => {
                   const position = item.position;
-                  
+
                   // Simplified positioning
                   let scale = 1;
                   let xOffset = 0;
@@ -213,30 +237,30 @@ export default function AutoRotatingCarousel() {
                       key={`${item.chip}-${activeIndex}-${idx}`}
                       className="absolute"
                       initial={{ scale: 0.9, x: 0, opacity: 0 }}
-                      animate={{ 
+                      animate={{
                         scale,
                         x: xOffset,
                         y: yOffset,
                         opacity,
-                        zIndex
+                        zIndex,
                       }}
                       exit={{ scale: 0.9, opacity: 0 }}
-                      transition={{ 
+                      transition={{
                         duration: 0.5,
-                        ease: [0.4, 0, 0.2, 1]
+                        ease: [0.4, 0, 0.2, 1],
                       }}
                       style={{ zIndex }}
                     >
-                      <div 
+                      <div
                         className="bg-white rounded-2xl overflow-hidden shadow-xl"
-                        style={{ 
-                          width: '320px',
-                          height: '400px',
-                          filter: blur > 0 ? `blur(${blur}px)` : 'none'
+                        style={{
+                          width: "320px",
+                          height: "400px",
+                          filter: blur > 0 ? `blur(${blur}px)` : "none",
                         }}
                       >
                         <div className="relative w-full h-full">
-                          <img 
+                          <img
                             src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover"
@@ -264,11 +288,11 @@ export default function AutoRotatingCarousel() {
               className="transition-all"
               aria-label={`Go to slide ${index + 1}`}
             >
-              <div 
+              <div
                 className={`h-2 rounded-full transition-all ${
-                  index === activeIndex 
-                    ? 'w-8 bg-gray-800' 
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
+                  index === activeIndex
+                    ? "w-8 bg-gray-800"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
                 }`}
               />
             </button>

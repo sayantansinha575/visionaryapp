@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/lib/utils";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
-import {
-  Youtube,
-  Facebook,
-  Linkedin,
-} from "lucide-react";
+import { Youtube, Facebook, Linkedin } from "lucide-react";
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 export default function Footer() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -16,7 +14,7 @@ export default function Footer() {
       {/* Footer - Minimalist Google Style */}
       <footer className="bg-white border-t border-gray-200 mt-32">
         <div className="w-full px-6 md:px-12 py-16">
-          {/* Social Media */}
+          {/* Social Media — commented out for now
           <div className="mb-16 pb-8 border-b border-gray-200">
             <div className="flex items-center gap-6">
               <span className="text-sm text-gray-600 font-medium">
@@ -57,6 +55,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
+          */}
 
           {/* Footer Links Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
@@ -68,6 +67,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={createPageUrl("Students")}
+                    onClick={scrollToTop}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     Students
@@ -76,6 +76,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={createPageUrl("Teachers")}
+                    onClick={scrollToTop}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     Teachers
@@ -84,6 +85,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={createPageUrl("Professionals")}
+                    onClick={scrollToTop}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     Professional
@@ -92,6 +94,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={createPageUrl("Parents")}
+                    onClick={scrollToTop}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     Parents
@@ -172,6 +175,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/about-us"
+                    onClick={scrollToTop}
                     className="text-sm text-gray-600 hover:text-gray-900"
                   >
                     About Visionary
@@ -186,12 +190,12 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => setIsDialogOpen(true)}
-                    className="text-sm text-gray-600 hover:text-gray-900 text-left"
+                  <a
+                    href="mailto:raj@visionary.org.in"
+                    className="text-sm text-gray-600 hover:text-gray-900"
                   >
-                    Contact
-                  </button>
+                    Contact us
+                  </a>
                 </li>
               </ul>
             </div>
@@ -201,7 +205,7 @@ export default function Footer() {
           <div className="border-t border-gray-200 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-6 text-sm text-gray-600">
-                <Link to="/">
+                <Link to="/" onClick={scrollToTop}>
                   <img
                     src="/assets/Visionary_logo.png"
                     alt="Visionary"
@@ -209,10 +213,18 @@ export default function Footer() {
                     loading="lazy"
                   />
                 </Link>
-                <Link to="/privacy-policy" className="hover:text-gray-900">
+                <Link
+                  to="/privacy-policy"
+                  onClick={scrollToTop}
+                  className="hover:text-gray-900"
+                >
                   Privacy
                 </Link>
-                <Link to="/terms-of-service" className="hover:text-gray-900">
+                <Link
+                  to="/terms-of-service"
+                  onClick={scrollToTop}
+                  className="hover:text-gray-900"
+                >
                   Terms
                 </Link>
               </div>
@@ -224,7 +236,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      <CommingSoonDialog 
+      <CommingSoonDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         message="This feature is coming soon! We're working hard to bring you an amazing experience."
