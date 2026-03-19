@@ -1,11 +1,29 @@
 import { useEffect, useRef, useState } from "react";
+import Typed from "typed.js";
 import CommingSoonDialog from "@/components/CommingSoonDialog";
 
 export default function Hero() {
   // const videoRef = useRef(null);
+  const typedRef = useRef(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   // Background video in /assets (uploaded as background_hero_video.mp4)
   // const videoSrc = '/assets/background_hero_video.mp4';
+
+  useEffect(() => {
+    const typed = new Typed(typedRef.current, {
+      strings: ["Learn", "Ask", "Practice", "Build"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 1500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
   // useEffect(() => {
   //   if (videoRef.current) {
@@ -35,20 +53,20 @@ export default function Hero() {
       */}
       {/* Content */}
       <div className="relative z-10 w-full px-6 md:px-12 pt-20">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl lg:max-w-6xl">
           {/* Main Headline */}
           <h1
-            className="mb-6 tracking-tight"
+            className="mb-6 tracking-tight flex flex-col"
             style={{ letterSpacing: "-0.03em" }}
           >
             <span
-              className="block text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] text-[#202124]"
+              className="block text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] text-[#202124] whitespace-nowrap"
               style={{
                 fontFamily: "Google Sans",
                 fontWeight: 500,
               }}
             >
-              Learn Ask Practice Build.
+              <span ref={typedRef} className="text-[#4285F4]"></span> Anything.
             </span>
             <span
               className="block text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] text-[#202124] mt-2"

@@ -170,10 +170,7 @@ function MainLayout({ children, currentPageName }) {
                     <Menu size={24} />
                   </button>
 
-                  <Link
-                    to="/"
-                    className="flex items-center gap-3"
-                  >
+                  <Link to="/" className="flex items-center gap-3">
                     <img
                       src="/assets/Visionary_logo.png"
                       alt="Visionary Logo"
@@ -285,10 +282,7 @@ function MainLayout({ children, currentPageName }) {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="M8 5v14l11-7z"
-                        fill="currentColor"
-                      />
+                      <path d="M8 5v14l11-7z" fill="currentColor" />
                     </svg>
                     Demo
                   </button>
@@ -369,10 +363,7 @@ function MainLayout({ children, currentPageName }) {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M8 5v14l11-7z"
-                    fill="currentColor"
-                  />
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
                 </svg>
                 Demo
               </button>
@@ -503,10 +494,7 @@ function MainLayout({ children, currentPageName }) {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="M8 5v14l11-7z"
-                        fill="currentColor"
-                      />
+                      <path d="M8 5v14l11-7z" fill="currentColor" />
                     </svg>
                     Demo
                   </button>
@@ -522,7 +510,7 @@ function MainLayout({ children, currentPageName }) {
 
       <Footer />
 
-      <CommingSoonDialog 
+      <CommingSoonDialog
         isOpen={isDownloadDialogOpen}
         onClose={() => setIsDownloadDialogOpen(false)}
         message="The Visionary app is coming soon! We're putting the finishing touches on an amazing learning experience."
